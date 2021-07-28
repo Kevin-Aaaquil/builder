@@ -13,8 +13,7 @@ async function connect() : Promise <Db> {
     return client.db(process.env.DB_NAME)
 }
 
-// this function is default exported for other modules to call to connect
-// or access db and collections
+// this function is default exported for other modules to call to connect or access db and collections
 async function DB() : Promise<Db>{
     if(!db)
     db=await connect()
