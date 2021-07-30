@@ -13,7 +13,7 @@ const buildProdLog = ()=>{
         defaultMeta:{service : 'user-service'},
         transports: [
             new transports.Console(),
-            new transports.File({filename : './LOGS/PROG.log'})
+            new transports.File({filename : './LOGS/PROD.log'})
         ],
     });
 }
