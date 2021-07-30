@@ -5,7 +5,7 @@ const { combine, timestamp , errors , json} = format;
 const buildProdLog = ()=>{
     
     return createLogger({
-        level : 'info', //change level to view other logs
+        level : 'warn', //change level to view other logs
         format: combine(
             timestamp({format : 'YYYY-MM-DD HH:mm:ss ZZ'}), // YEAR MONTH DAY HOUR MINUTE SECOND TIMEZONE
             errors({stack : true}),
