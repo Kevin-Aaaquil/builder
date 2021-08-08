@@ -1,23 +1,19 @@
-require('dotenv').config();
-import logger from './logs'
-import { MongoClient, Db } from 'mongodb';
-let db : Db;
+import { MongoClient, Db } from "mongodb";
+import config from "./config";
+let db :Db;
 
-// this function is used for connecting to mongodb client and return db
-async function connect() : Promise <Db> {
-
-    const client = new MongoClient(process.env.MONGO_URI!,{
-        ignoreUndefined: true
-    })
-    logger.info('database connected')
-    return client.db(process.env.DB_NAME)
+const connect = async () : Promise<Db> => {
+const client = new MongoClient(config.MONGODB_URI,{
+    ignoreUndefined:true
+})
+console.log("✅ : database connected")
+return client.db(config.DB_NAME || "test")
 }
 
-// this function is default exported for other modules to call to connect or access db and collections
-async function DB() : Promise<Db>{
-    if(!db)
-    db=await connect()
+export default  async () : Promise<Db> => {
+    if(!db){
+        db  = await connect()
+        return db;
+    }
     return db;
 }
-
-export default DB
