@@ -1,4 +1,5 @@
 import chalk from "chalk";
+// chalk@4.1.2
 
 class CustomLogger {
   message: string;
